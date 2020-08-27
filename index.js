@@ -6,6 +6,10 @@ const toppings = ['Mushrooms ', 'Tomatoes', 'Eggs', 'Chili', 'Lettuce', 'Avocado
 TASK 1 🚀
 // The customer would like to see the topping options, console log out each of the toppings one by one in the array above 
 */
+toppings.forEach(function(item){
+    console.log(item);
+});
+    
 
 
 /*
@@ -16,6 +20,21 @@ Use .forEach() - hint - you will need to include the index in the callback
  */
 
 
+ function ingredients(array,item){
+     array.forEach(function(eggs,index){
+         if(eggs == item){
+       array.splice (index,1)
+    };
+
+});
+
+
+}
+ 
+console.log(toppings)
+ingredients(toppings,"Onions")
+console.log(toppings)
+// get clarification
 
 /*
 TASK 3 🚀
@@ -23,7 +42,8 @@ TASK 3 🚀
 */
 
 
-
+toppings.sort();
+console.log(toppings);
 
 const vacations = [
     {city: 'Toronto', country: 'Canada', region: 'North America', temperature: 86, beach: true, sea: false, wifi:'strong', hiking: false, overall_rating: 6,},
@@ -38,26 +58,36 @@ const vacations = [
     {city: 'Cancun', country: 'Mexico', region: 'North America', temperature: 95, beach: true, sea: true, wifi:'medium', hiking: false, overall_rating: 7,},
 ];
 
+
 /*
 TASK 4 🚀
 // The travel agent would like to send a couple on their honeymoon to a location with a beach and a temperature above 90 degrees. return their options in a new array 
 */
+const hotWx = vacations.filter(function(item){
+    return item.temperature > 90, item.beach == true;
+});
 
-
+console.log(hotWx);
 
 /*
 TASK 5 🚀
 // A developer decides to become a digital nomad for a year, they would like to live in a place with strong wifi, a beach, and good hiking, return their options
 */
+const wireLess = vacations.filter(function(item){
+    return item.hiking == true, item.wifi == 'strong', item.beach == true;
+    
+});
+console.log(wireLess);
 
-
-
-/* 
+/*
 TASK 6 🚀
 // write a function that allows a user to sort their vacations by hiking opportunities, beach access or a mix of both and return their options
 */
 
-
+const newSpots = vacations.filter(function(element){
+    return element.beach == true && element.hiking == true;
+});
+console.log(newSpots);
 
 /* 
 TASK 7 🚀
@@ -65,10 +95,23 @@ TASK 7 🚀
 hint - use .reduce()
 */
 
+const newRating = function(array){
+    total = array.reduce(function(accum, item){
+        return (accum + item.overall_rating);
+    },0);
+    return total / array.length
+}
 
+console.log(newRating(vacations));
 /*
 TASK 8 🚀
 Find the airport codes for each of the cities in the vacation array and write a function to add them to the objects in the array
 hint - your function should include array, index and code as parameters
 you will need to invoke the function each time you wish to add a new code
 */
+
+const codes = ['YYZ','MIA', 'ETM', 'IST', 'BKK', 'LIM', 'MCT', 'SYD', 'CPT', 'CUN']
+vacations.forEach(function(item,index){
+    item.code = codes[index]
+})
+console.log(vacations)
